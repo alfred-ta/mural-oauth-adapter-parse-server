@@ -804,3 +804,23 @@ Parse.Cloud.define("refresh", async (request) => {
     return { success: false, error };
   }
 });
+
+Parse.Cloud.define("currentUser", async (request) => {
+  try {
+    const response = await axios.get('https://app.mural.co/api/public/v1/users/me', {
+      headers: {
+        'Authorization': `Bearer ${request.token}`
+      }
+    });
+    if (response.status !== 200) {
+      throw 'unauthorized for getting currentUser';
+    }
+    return {
+      success: true,
+      currentUser: response.data.value
+    }
+  } catch(error) {
+    console.log("getting current user error", error)
+    return { success: false, error };
+  }
+})
