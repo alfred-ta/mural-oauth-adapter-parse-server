@@ -765,10 +765,19 @@ Parse.Cloud.define("token", async (request) => {
     if (response.status!== 200) {
       throw 'token request failed';
     }
+    const meResponse = await axios.get('https://app.mural.co/api/public/v1/users/me', {
+      headers: {
+        'Authorization': `Bearer ${response.data.access_token}`
+      }
+    });
+    if (meResponse.status !== 200) {
+      throw 'unauthorized for getting currentUser';
+    }
     return {
       success: true,
       accessToken: response.data.access_token,
       refreshToken: response.data.refresh_token,
+      me: meResponse.data.value
     };
     
   } catch(error) {
@@ -793,19 +802,10 @@ Parse.Cloud.define("refresh", async (request) => {
     if (response.status!== 200) {
       throw 'token request failed';
     }
-    const meResponse = await axios.get('https://app.mural.co/api/public/v1/users/me', {
-      headers: {
-        'Authorization': `Bearer ${response.data.access_token}`
-      }
-    });
-    if (meResponse.status !== 200) {
-      throw 'unauthorized for getting currentUser';
-    }
     return {
       success: true,
       accessToken: response.data.access_token,
-      refreshToken: response.data.refresh_token,
-      me: meResponse.data.value
+      refreshToken: response.data.refresh_token
     };
     
   } catch(error) {
