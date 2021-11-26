@@ -4003,10 +4003,12 @@ parse-server-mailgun@^2.4.15:
     mailgun-js "^0.22.0"
     mustache "^3.0.0"
 
-parse-server-mural-auth-adapter@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/parse-server-mural-auth-adapter/-/parse-server-mural-auth-adapter-1.0.1.tgz#7b04cc56a7798f02b4868d2c02d42d42d64c232e"
-  integrity sha512-bTm7Y5rCXLMBqnJcPjsmlHbQ74sUJ2W41lsYYnemtuKALJaOqY/HC+phGhftZ72FzsK99utUCPp6FN1mY4+WwQ==
+parse-server-mural-auth-adapter@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/parse-server-mural-auth-adapter/-/parse-server-mural-auth-adapter-1.0.2.tgz#a5c6a9868f4a4d869da4e053f38e1f64caaa80ec"
+  integrity sha512-9p8Sg69dfYOp97SCnvwuMxaZcw7eInxKlwPVYwdtr+/EvkXJGqvYUVbvjKUXofyZ2oKzPXfifHd/CIKkXox3Jw==
+  dependencies:
+    axios "^0.24.0"
 
 parse@2.12.0:
   version "2.12.0"
